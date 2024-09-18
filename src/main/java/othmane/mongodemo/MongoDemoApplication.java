@@ -46,6 +46,7 @@ public class MongoDemoApplication {
 
 			// usingMongoTemplateAndQuery(repository, mongoTemplate, email, student);
 
+			// Handle email unique using queries from method names
 			repository.findStudentByEmail(email)
 					.ifPresentOrElse(s -> {
 						System.out.println(s + " already exists");
@@ -57,6 +58,7 @@ public class MongoDemoApplication {
 			
 	}
 
+	// Handle email unique using Mongo Template and query
 	private static void usingMongoTemplateAndQuery(StudentRepository repository, MongoTemplate mongoTemplate, String email, Student student) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("email").is(email));
